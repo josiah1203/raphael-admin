@@ -301,6 +301,7 @@ source = { editable = "." }
 dependencies = [
     { name = "fastapi" },
     { name = "httpx" },
+    { name = "raphael-audit" },
     { name = "raphael-contracts" },
     { name = "uvicorn" },
 ]
@@ -310,6 +311,30 @@ dev = [
     { name = "httpx" },
     { name = "pytest" },
     { name = "ruff" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "fastapi", specifier = ">=0.110" },
+    { name = "httpx", specifier = ">=0.27" },
+    { name = "httpx", marker = "extra == 'dev'", specifier = ">=0.27" },
+    { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.0" },
+    { name = "raphael-audit", editable = "../raphael-audit" },
+    { name = "raphael-contracts", editable = "../raphael-contracts" },
+    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.4" },
+    { name = "uvicorn", specifier = ">=0.27" },
+]
+provides-extras = ["dev"]
+
+[[package]]
+name = "raphael-audit"
+version = "0.1.0"
+source = { editable = "../raphael-audit" }
+dependencies = [
+    { name = "fastapi" },
+    { name = "httpx" },
+    { name = "raphael-contracts" },
+    { name = "uvicorn" },
 ]
 
 [package.metadata]
