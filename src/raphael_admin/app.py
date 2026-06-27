@@ -5,8 +5,11 @@ from __future__ import annotations
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 
+from raphael_contracts.db import ensure_migrations
 from raphael_contracts.errors import ErrorResponse
 from raphael_admin.routes import router
+
+ensure_migrations()
 
 app = FastAPI(
     title="raphael-admin",
