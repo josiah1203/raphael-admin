@@ -124,3 +124,16 @@ def license_templates() -> dict[str, list]:
             for t in templates
         ]
     }
+
+
+@router.post("/domain/verify")
+def verify_domain(body: dict[str, Any]) -> dict[str, Any]:
+    domain = (body.get("domain") or "").strip().lower()
+    if not domain:
+        raise HTTPException(400, detail="domain_required")
+    token = domain.replace(".", "-")
+    return {
+        "domain": domain,
+        "status": "pending",
+        "txt_record": f"hblabs-verify={token}",
+    }
